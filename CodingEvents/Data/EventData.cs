@@ -30,7 +30,7 @@ namespace CodingEvents.Data
         }
 
         // remove event
-        public static void RemoveEvent(int id)
+        public static void Remove(int id)
         {
             Events.Remove(id);
         }

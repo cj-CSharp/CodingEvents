@@ -1,6 +1,11 @@
 ﻿<h1>Coding Events</h1>
 
-<p><a app-controller="Events" asp-action="Add">Add Event</a></p>
+<p>
+    <a app-controller="Events" asp-action="Add">Add Event</a>
+</p>
+<p>
+    <a app-controller="Events" asp-action="Delete"> Delete Event</a>
+</p>
 
 @if (ViewBag.events.Count == 0)
 {

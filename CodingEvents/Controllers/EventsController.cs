@@ -35,11 +35,22 @@ namespace CodingEvents.Controllers
             return Redirect("/Events");
         }
 
-        
+        [HttpGet]
         public IActionResult Delete()
         {
             ViewBag.events = EventData.GetAll();
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Delete(int[] eventIds)
+        {
+            foreach(int id in eventIds)
+            {
+                EventData.Remove(id);
+            }
+
+            return Redirect("/Events");
         }
     }
 }
