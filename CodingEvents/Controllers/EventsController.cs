@@ -52,5 +52,25 @@ namespace CodingEvents.Controllers
 
             return Redirect("/Events");
         }
+
+        
+        [Route("/Events/Edit/{eventId}")] //I did put a ? in the {} so it read {eventId?} but that wasn't correct
+        public IActionResult Edit(int eventId)
+        {
+            Event thisEvent = EventData.GetById(eventId);
+            ViewBag.thisEvent = thisEvent;
+            ViewBag.title = $"Edit Event {thisEvent.Name} (id={thisEvent.Id})";
+            return View();
+        }
+
+        [HttpPost]
+        [Route("/Events/Edit")]
+        public IActionResult SubmitEditEventForm(int eventId, string name, string description)
+        {
+            Event thisEvent = EventData.GetById(eventId);
+            thisEvent.Name = name;
+            thisEvent.Description = description;
+            return Redirect("/Events");
+        }
     }
 }
