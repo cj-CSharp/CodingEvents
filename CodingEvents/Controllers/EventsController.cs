@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CodingEvents.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CodingEvents.Controllers
 {
     public class EventsController : Controller
     {
-        
-        private static Dictionary<string, string> Events = new Dictionary<string, string>();
 
+        private static List<Event> Events = new List<Event>();
 
         //GET: /<controllers>/
         [HttpGet]
@@ -29,9 +29,9 @@ namespace CodingEvents.Controllers
 
         [HttpPost]
         [Route("/events/add")]
-        public IActionResult NewEvent(string name, string description)
+        public IActionResult NewEvent(string name)
         {
-            Events.Add(name, description);
+            Events.Add(new Event(name));
 
             return Redirect("/Events");
         }
